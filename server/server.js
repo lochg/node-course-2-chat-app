@@ -14,26 +14,34 @@ app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
     console.log('New user connected');
-    // socket.on('createEmail', (mail) => {
-    //     console.log('Server side: createEmail', mail);
-        
-    // });
 
-    // socket.emit('newEmailCreated', {
-    //     from: 'hsbc@gmail.com',
-    //     title: 'Want to create a credit card?',
-    //     content: 'Nothing special'
-    // });
+    socket.emit('newMessage', {
+        from: 'Admin',
+        content: 'Welcome to the chat app',
+        createAt: new Date().getTime()
+    });
 
+
+    socket.broadcast.emit('newMessage', {
+        from: 'Admin',
+        content: 'New user join.',
+        createAt: new Date().getTime()
+    });
 
     socket.on('createMessage', (msg) => {
         console.log('Message:', msg)
         io.emit('newMessage', {
             from: msg.from,
             content: msg.content,
-            createAt: new Date().getFullYear
+            createAt: new Date().getTime()
         });
+        // socket.broadcast.emit('newMessage', {
+        //     from: msg.from,
+        //     content: msg.content,
+        //     createAt: new Date().getTime()
+        // });
     });
+
 
     socket.on('disconnect', () => {
         console.log('User was disconnected');
