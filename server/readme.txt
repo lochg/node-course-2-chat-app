@@ -7,5 +7,5 @@ Using heroku
 1. Install heroku
 2. command line: heroku login với  (email, password) ở 0.
 3. command line: git push heroku
-3. command line: heroku create (deploy)
-4. command line: heroku open (Mở trang web đã được deploy)
+4. command line: heroku create (deploy)
+5. command line: heroku open (Mở trang web đã được deploy)
