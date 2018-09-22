@@ -7,8 +7,8 @@ socket.on('disconnect', function() {
     console.log('Disconnected from server.');
 });
 
-socket.on('newMessage', function(email) {
-    console.log('New email.', email);
+socket.on('newMessage', function(msg) {
+    console.log('New message.', msg);
 });
 
 
